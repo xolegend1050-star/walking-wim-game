@@ -26,46 +26,43 @@ func Enter():
 		chase_started = true
 
 func Physics_Update(_delta: float):
-	# If player is somehow null, return
 	if player == null:
 		return
 	
-	# Set the target position again
 	nav_agent.target_position = player.global_position
-	
-	# Get the next path position
 	var next_pos = nav_agent.get_next_path_position()
-	
-	# Get the distance from the next pos to the zombie position.
 	var direction = (next_pos - enemy.global_position)
 	
-	# Check if zombie is outside of range
-	if enemy.global_position.distance_to(player.global_position) > 30: 
-		# Go to idle mode.
-		Transitioned.emit(self, "idle")
+	var dist_to_player = enemy.global_position.distance_to(player.global_position)
 	
-	var distance_to_player = enemy.global_position.distance_to(player.global_position)
-	# If that length is less than 1.4, meaning the zombie is next to the player
-	if distance_to_player < 1.4:
-		# Set the velocity to 0.
+	# Check if player is making noise
+	var player_vel = player.velocity.length()
+	var has_torch = player.has_torch_item if "has_torch_item" in player else false
+	var player_noisy = player_vel > 3.0 or has_torch
+	
+	# Lose the player if they are far AND quiet
+	if dist_to_player > 25.0 and not player_noisy:
+		Transitioned.emit(self, "idle")
+		return
+	
+	# Also lose if very far regardless
+	if dist_to_player > 35.0:
+		Transitioned.emit(self, "idle")
+		return
+	
+	# Kill range
+	if dist_to_player < 1.4:
 		enemy.velocity = Vector3.ZERO
-		# Get the game over screen.
 		enemy._on_state_gameover()
 		return
 	
-	# other wise, set the velocity to the distance * speed.
 	enemy.velocity = direction.normalized() * move_speed
 	
-	# If the zombie is moving
 	if enemy.velocity.length() > 0.1:
-		# Reverse the direction, because the model loaded in backwards.
 		var facing_direction = -enemy.velocity.normalized()
-		# Look at the direction.
 		enemy.look_at(enemy.global_position + facing_direction, Vector3.UP)
-		# Play the running animation
 		enemy.get_node("AnimationPlayer").play("Armature|Running_Crawl")
 	
-	# Move it!
 	enemy.move_and_slide()
 
 func Exit():

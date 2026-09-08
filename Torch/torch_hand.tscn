@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://torchhand01"]
+
+[ext_resource type="Script" path="res://Torch/torch_hand.gd" id="1_flicker"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_handle"]
+top_radius = 0.02
+bottom_radius = 0.025
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Mat_wood"]
+albedo_color = Color(0.3, 0.18, 0.08, 1)
+roughness = 0.9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wrap"]
+top_radius = 0.028
+bottom_radius = 0.022
+height = 0.12
+
+[sub_resource type="StandardMaterial3D" id="Mat_wrap"]
+albedo_color = Color(0.15, 0.12, 0.08, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_flame_core"]
+radius = 0.04
+height = 0.18
+
+[sub_resource type="StandardMaterial3D" id="Mat_flame_core"]
+albedo_color = Color(1, 0.8, 0.2, 1)
+emission_enabled = true
+emission = Color(1, 0.6, 0.05, 1)
+emission_energy_multiplier = 5.0
+transparency = 1
+albedo_color = Color(1, 0.8, 0.2, 0.9)
+
+[sub_resource type="SphereMesh" id="SphereMesh_flame_outer"]
+radius = 0.06
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="Mat_flame_outer"]
+albedo_color = Color(1, 0.4, 0.05, 0.6)
+emission_enabled = true
+emission = Color(1, 0.3, 0, 1)
+emission_energy_multiplier = 3.0
+transparency = 1
+
+[node name="TorchHand" type="Node3D"]
+script = ExtResource("1_flicker")
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_handle")
+material_override = SubResource("Mat_wood")
+
+[node name="Wrap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("CylinderMesh_wrap")
+material_override = SubResource("Mat_wrap")
+
+[node name="FlameCore" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 0)
+mesh = SubResource("SphereMesh_flame_core")
+material_override = SubResource("Mat_flame_core")
+
+[node name="FlameOuter" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+mesh = SubResource("SphereMesh_flame_outer")
+material_override = SubResource("Mat_flame_outer")
+
+[node name="TorchLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(1, 0.7, 0.3, 1)
+light_energy = 2.0
+omni_range = 12.0

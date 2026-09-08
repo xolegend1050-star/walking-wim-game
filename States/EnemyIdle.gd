@@ -72,9 +72,17 @@ func Physics_Update(_delta: float):
 	
 	# Get the distance
 	var direction = player.global_position - enemy.global_position
+	var dist = direction.length()
 	
-	# Check if distance is shorter than 30
-	if direction.length() < 20:
+	# Check if player is making noise (running or has torch)
+	var player_vel = player.velocity.length() if player else 0
+	var has_torch = player.has_torch_item if player and "has_torch_item" in player else false
+	var player_noisy = player_vel > 3.0 or has_torch
+	
+	# Only detect player if:
+	# - Very close (10 units), OR
+	# - Player is making noise (running/torch) within 18 units
+	if dist < 10.0 or (player_noisy and dist < 18.0):
 		# Go to the follow state.
 		Transitioned.emit(self, "follow")
 	
