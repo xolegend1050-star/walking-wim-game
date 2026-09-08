@@ -1679,15 +1679,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0, 0.5, -15.0)
 [node name="Battery4" parent="Batteries" instance=ExtResource("26_battery")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0, 0.5, -20.0)
 
-[node name="Battery5" parent="Batteries" instance=ExtResource("26_battery")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0, 0.5, 5.0)
-
-[node name="Battery6" parent="Batteries" instance=ExtResource("26_battery")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0, 0.5, -15.0)
-
-[node name="Battery7" parent="Batteries" instance=ExtResource("26_battery")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0, 0.5, 15.0)
-
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door1" parent="Doors" instance=ExtResource("27_door")]
