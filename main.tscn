@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://0ghgg31mm7hs" path="res://Assets/blinds/window_blinds.glb" id="24_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://torch0001" path="res://Torch/torch_pickup.tscn" id="25_torch"]
 [ext_resource type="PackedScene" uid="uid://battery001" path="res://Torch/battery_pickup.tscn" id="26_battery"]
-[ext_resource type="PackedScene" uid="uid://door00001" path="res://Door/door.tscn" id="27_door"]
 [ext_resource type="Script" path="res://UI/battery_ui.gd" id="28_battui"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0xm2m"]
@@ -1680,18 +1679,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3, 0.5, 11.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0, 0.5, 10.0)
 
 [node name="Doors" type="Node" parent="."]
-
-[node name="Door1" parent="Doors" instance=ExtResource("27_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, -12.5)
-
-[node name="Door2" parent="Doors" instance=ExtResource("27_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 0, 0.0)
-
-[node name="Door3" parent="Doors" instance=ExtResource("27_door")]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.0, 0, 17.5)
-
-[node name="Door4" parent="Doors" instance=ExtResource("27_door")]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 13.0, 0, -26.5)
-
-[node name="Door5" parent="Doors" instance=ExtResource("27_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 0, -28.5)
