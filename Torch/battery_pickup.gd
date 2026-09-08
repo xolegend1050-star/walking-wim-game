@@ -35,8 +35,8 @@ func _on_body_entered(body: Node3D) -> void:
 		$CollisionShape3D.set_deferred("disabled", true)
 		$BatteryGlow.visible = false
 		
-		# Random respawn between 30-60 seconds
-		respawn_timer.wait_time = randf_range(30.0, 60.0)
+		# Random respawn between 5-10 seconds so player never waits long
+		respawn_timer.wait_time = randf_range(5.0, 10.0)
 		respawn_timer.start()
 
 func _respawn():
