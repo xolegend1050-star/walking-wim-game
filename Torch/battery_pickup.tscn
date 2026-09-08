@@ -9,7 +9,7 @@ size = Vector3(0.15, 0.25, 0.08)
 albedo_color = Color(0.2, 0.6, 0.2, 1)
 emission_enabled = true
 emission = Color(0, 1, 0.2, 1)
-emission_energy_multiplier = 0.5
+emission_energy_multiplier = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_batt"]
 radius = 0.5
@@ -34,3 +34,9 @@ font_size = 20
 modulate = Color(0.5, 1, 0.5, 1)
 billboard = 1
 no_depth_test = true
+
+[node name="BatteryGlow" type="OmniLight3D" parent="."]
+light_color = Color(0.2, 1, 0.4, 1)
+light_energy = 0.6
+omni_range = 3.0
+omni_attenuation = 1.5
