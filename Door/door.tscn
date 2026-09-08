@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://door00001"]
+[gd_scene load_steps=5 format=3 uid="uid://door00001"]
 
 [ext_resource type="Script" path="res://Door/door.gd" id="1_door"]
 
@@ -8,14 +8,29 @@ size = Vector3(1.5, 3, 0.2)
 [sub_resource type="BoxMesh" id="BoxMesh_door"]
 size = Vector3(1.5, 3, 0.15)
 
+[sub_resource type="StandardMaterial3D" id="Mat_door"]
+albedo_color = Color(0.4, 0.25, 0.15, 1)
+roughness = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_area"]
+size = Vector3(2.5, 3, 2.0)
+
 [node name="Door" type="StaticBody3D"]
 script = ExtResource("1_door")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_door")
+material_override = SubResource("Mat_door")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_door")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_area")
 
 [node name="PromptLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
@@ -27,3 +42,6 @@ modulate = Color(1, 0.9, 0.6, 1)
 outline_modulate = Color(0, 0, 0, 1)
 billboard = 1
 no_depth_test = true
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_exited"]
