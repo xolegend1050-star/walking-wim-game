@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6yt8nx1jrub8"]
+
+[ext_resource type="Script" uid="uid://dyfd8xyr6f2be" path="res://UI/retry.gd" id="1_3y5qq"]
+[ext_resource type="FontFile" uid="uid://c1x15a3ammekv" path="res://Fonts/who asks satan.ttf" id="1_jawqf"]
+[ext_resource type="Texture2D" uid="uid://bgv67f8krty1k" path="res://UI/end_screen/cogniam_base.png" id="2_wruqd"]
+[ext_resource type="Texture2D" uid="uid://d260wbse8jnqa" path="res://UI/end_screen/cogniam_bloody.png" id="4_phit2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3y5qq"]
+font = ExtResource("1_jawqf")
+font_size = 200
+font_color = Color(0, 0, 0, 1)
+outline_size = 16
+outline_color = Color(0.64705884, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phit2"]
+bg_color = Color(0.64705884, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmr02"]
+bg_color = Color(0.10980392, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwcg4"]
+bg_color = Color(0.32941177, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3y5qq")
+background_after_delay = ExtResource("4_phit2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wruqd")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50600004
+anchor_top = 0.5
+anchor_right = 0.50600004
+anchor_bottom = 0.5
+offset_left = -334.68005
+offset_top = -290.0
+offset_right = 335.31995
+offset_bottom = -108.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_3y5qq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Retry" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 96.0
+offset_right = 98.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jawqf")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_phit2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fmr02")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jwcg4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phit2")
+text = "Retry?"

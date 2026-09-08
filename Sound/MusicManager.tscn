@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2ff2k7qxd52"]
+
+[ext_resource type="Script" uid="uid://bbr6u4pswh5p6" path="res://Sound/music_manager.gd" id="1_d57xr"]
+[ext_resource type="AudioStream" uid="uid://c7sa8q168vw5i" path="res://Sound/dark-horror-soundscape-345814.mp3" id="2_d1x3f"]
+[ext_resource type="AudioStream" uid="uid://21o1xu26w15j" path="res://Sound/2025-06-17_Monster_Heat_-_www.FesliyanStudios.com_David_Fesliyan.mp3" id="3_24yun"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_d57xr")
+
+[node name="NormalMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d1x3f")
+
+[node name="ChaseMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_24yun")

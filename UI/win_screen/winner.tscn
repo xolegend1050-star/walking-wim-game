@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ux3ybhrw3eg"]
+
+[ext_resource type="Script" uid="uid://eegvgmoaiuj0" path="res://UI/win_screen/winner.gd" id="1_xdnag"]
+[ext_resource type="Texture2D" uid="uid://deovthqplgpu4" path="res://UI/win_screen/CHNwHafB.jpg" id="3_e3mw6"]
+
+[node name="Winner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdnag")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 18.0
+texture = ExtResource("3_e3mw6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 571.0
+offset_top = 179.0
+offset_right = -580.0
+offset_bottom = -492.0
+text = "You escaped!
+Congratulations!"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 433.0
+offset_top = 269.0
+offset_right = -797.0
+offset_bottom = -420.0
+text = "Retry"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 434.0
+offset_top = 314.0
+offset_right = -804.0
+offset_bottom = -375.0
+text = "Quit"
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 756.0
+offset_top = 184.0
+offset_right = -428.0
+offset_bottom = -491.0
+grow_horizontal = 2
+grow_vertical = 2

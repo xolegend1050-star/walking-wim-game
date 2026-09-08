@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn8x63pnoyen8"]
+
+[ext_resource type="Script" uid="uid://cfk87qoan1toy" path="res://CollectionPoints/collectionbulb.gd" id="1_0k2bq"]
+[ext_resource type="Script" uid="uid://byggr8tq2ag26" path="res://CollectionPoints/rotate.gd" id="1_fnff1"]
+[ext_resource type="PackedScene" uid="uid://dve6k03dyd6" path="res://CollectionPoints/EC-model.glb" id="1_knfkf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cq4q4"]
+radius = 0.2
+
+[node name="CollectibleSphere" type="Node3D"]
+script = ExtResource("1_fnff1")
+
+[node name="Tinkercad GLTF Scene" parent="." instance=ExtResource("1_knfkf")]
+transform = Transform3D(16, 0, 0, 0, -6.993822e-07, -16, 0, 16, -6.993822e-07, 0.08929095, 0.123986915, -0.08584204)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_cq4q4")
+script = ExtResource("1_0k2bq")
+
+[connection signal="body_entered" from="Area3D" to="Area3D/CollisionShape3D" method="_on_area_3d_body_entered"]

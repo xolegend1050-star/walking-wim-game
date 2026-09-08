@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6c2ac38d2r6x"]
+
+[ext_resource type="PackedScene" uid="uid://oaafia0rgfwk" path="res://Player/character.glb" id="1_c4srt"]
+[ext_resource type="Script" uid="uid://txlsy8b8s0a5" path="res://Player/player.gd" id="1_t4182"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o3ovs"]
+radius = 0.41461363
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_t4182")
+walk_speed = 3.5
+sprint_speed = 6.0
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Character" parent="Pivot" instance=ExtResource("1_c4srt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00805235, 0.5250023, -0.022461057)
+shape = SubResource("SphereShape3D_o3ovs")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
